@@ -1,4 +1,3 @@
-
 import Navbar from "./components/navbar/navbar";
 import Footer from "./components/footer/footer";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
@@ -15,7 +14,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Login />} />
             <Route path="/cadastro" element={<Cadastro />} />
-            <Route path="/home" element={< Home/>} />
+            <Route path="/home" element={<Home />} />
           </Routes>
         </div>
         <Footer />
