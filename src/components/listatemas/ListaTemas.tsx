@@ -28,6 +28,7 @@ function ListaTemas() {
     try {
       setIsLoading(true);
       await buscar("/temas", setTemas, { headers: { Authorization: token } });
+      console.log(temas)
     } catch (error: any) {
       if (error.toString().includes("401")) {
         handleLogout();
