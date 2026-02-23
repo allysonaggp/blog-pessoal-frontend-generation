@@ -70,6 +70,7 @@ function FormTema() {
         await cadastrar("/temas", tema, setTema, {
           headers: { Authorization: token },
         });
+
         alert("O Tema foi cadastrado com sucesso!");
       } catch (error: any) {
         if (error.toString().includes("401")) {
@@ -84,7 +85,8 @@ function FormTema() {
   }
 
   return (
-    <div className="container flex flex-col items-center justify-center mx-auto mb-[26.2%]">
+    // <div className="container flex flex-col items-center justify-center mx-auto mb-[26.2%]">
+    <div className="container flex flex-col items-center justify-center mx-auto">
       <h1 className="text-4xl text-center my-8">{id === undefined ? "Cadastrar Tema" : "Editar Tema"}</h1>
 
       <form className=" w-1/2 flex flex-col gap-4" onSubmit={gerarNovoTema}>
@@ -93,7 +95,7 @@ function FormTema() {
           <input
             type="text"
             placeholder="Descreva seu tema aqui"
-            name="descrição"
+            name="descricao"
             className="border-2 border-slate-700 rounded p-2"
             value={tema.descricao}
             onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
