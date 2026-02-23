@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState, type ChangeEvent, type FormEvent } from "react";
+import { useContext, useEffect, useState, type ChangeEvent } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { ClipLoader } from "react-spinners";
 import { AuthContext } from "../../context/AuthContext";
@@ -19,7 +19,7 @@ function Login() {
     SetUsuarioLogin({ ...usuarioLogin, [e.target.name]: e.target.value });
   }
 
-  function login(e: FormEvent<HTMLFormElement>) {
+  function login(e: ChangeEvent<HTMLFormElement>) {
     e.preventDefault();
     handleLogin(usuarioLogin);
   }
