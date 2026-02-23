@@ -6,6 +6,8 @@ import { AuthProvider } from "./context/AuthContext";
 import Cadastro from "./pages/cadastro/Cadastro";
 import Home from "./pages/home/Home";
 import ListaTemas from "./components/listatemas/ListaTemas";
+import FormTema from "./components/tema/formtema/FormTema";
+
 
 function App() {
   return (
@@ -13,12 +15,14 @@ function App() {
       <AuthProvider>
         <BrowserRouter>
           <Navbar />
-          <div className="min-h[80hv]">
+          <div className="min-h-[80hv]">
             <Routes>
               <Route path="/" element={<Login />} />
               <Route path="/home" element={<Home />} />
               <Route path="/cadastro" element={<Cadastro />} />
-              <Route path="/temas" element={<ListaTemas/>} />
+              <Route path="/temas" element={<ListaTemas />} />
+              <Route path="/cadastrartema" element={<FormTema />}/>
+              <Route path="/editartema/:id" element={<FormTema />}/>
             </Routes>
           </div>
           <Footer />

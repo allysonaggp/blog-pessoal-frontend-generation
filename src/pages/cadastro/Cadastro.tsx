@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { useEffect, useState, type ChangeEvent, type FormEvent } from "react";
 import { useNavigate } from "react-router-dom";
 import { ClipLoader } from "react-spinners";
@@ -16,15 +17,16 @@ function Cadastro() {
     foto: "",
   });
 
+  function retornar() {
+    navigate("/");
+  }
+
   useEffect(() => {
     if (usuario.id !== 0) {
       retornar();
     }
   }, [usuario]);
 
-  function retornar() {
-    navigate("/login");
-  }
 
   function atualizarEstado(e: ChangeEvent<HTMLInputElement>) {
     setUsuario({
@@ -37,7 +39,7 @@ function Cadastro() {
     setConfirmarSenha(e.target.value);
   }
 
-  async function cadastrarNovoUsuario(e: FormEvent<HTMLFormElement>) {
+  async function cadastrarNovoUsuario(e: ChangeEvent<HTMLFormElement>) {
     e.preventDefault();
 
     if (confirmarSenha === usuario.senha && usuario.senha.length >= 8) {
