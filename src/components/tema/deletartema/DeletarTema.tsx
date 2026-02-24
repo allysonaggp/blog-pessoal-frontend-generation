@@ -76,7 +76,9 @@ function DeletarTema() {
           <button className="text-slate-100 bg-indigo-400 hover:bg-indigo-600 w-full py-2" onClick={retornar}>
             Não
           </button>
-          <button className="text-slate-100 bg-red-400 hover:bg-red-600 w-full py-2" onClick={deletarTema}>{isLoading?<ClipLoader color="#ffffff" size={24}/>:<span>sim</span>}</button>
+          <button className="text-slate-100 bg-red-400 hover:bg-red-600 w-full py-2" onClick={deletarTema}>
+            {isLoading ? <ClipLoader color="#ffffff" size={24} /> : <span>sim</span>}
+          </button>
         </div>
       </div>
     </div>
