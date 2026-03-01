@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useContext, useEffect, useState, type ChangeEvent, type FormEvent } from "react";
+import { useContext, useEffect, useState, type ChangeEvent } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import type Tema from "../../../models/Tema";
 import { AuthContext } from "../../../context/AuthContext";
@@ -61,7 +61,7 @@ function FormPostagem() {
 
   useEffect(() => {
     if (token === "") {
-      ToastAlerta("Você precisa estar logado","info");
+      ToastAlerta("Você precisa estar logado", "info");
       navigate("/");
     }
   }, [token]);
@@ -98,9 +98,6 @@ function FormPostagem() {
     e.preventDefault();
     setIsLoading(true);
 
-    // DEBUGGING DELETAR
-    // console.log("gerarNovaPostagem", postagem); <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-
     if (id !== undefined) {
       try {
         await atualizar(`/postagens`, postagem, setPostagem, {
@@ -108,14 +105,14 @@ function FormPostagem() {
             Authorization: token,
           },
         });
-        ToastAlerta("Postagem atualizada com sucesso!","sucesso");
+        ToastAlerta("Postagem atualizada com sucesso!", "sucesso");
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
       } catch (error: any) {
         if (error.toString().includes("401")) {
-          ToastAlerta("Sua sessão expirou, faça login novamente.","info");
+          ToastAlerta("Sua sessão expirou, faça login novamente.", "info");
           handleLogout();
         } else {
-          ToastAlerta("Erro ao atualizar postagem. Tente novamente.","erro");
+          ToastAlerta("Erro ao atualizar postagem. Tente novamente.", "erro");
         }
       }
     } else {
@@ -125,14 +122,14 @@ function FormPostagem() {
             Authorization: token,
           },
         });
-        ToastAlerta("Postagem cadastrada com sucesso!","sucesso");
+        ToastAlerta("Postagem cadastrada com sucesso!", "sucesso");
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
       } catch (error: any) {
         if (error.toString().includes("401")) {
-          ToastAlerta("Sua sessão expirou, faça login novamente.","info");
+          ToastAlerta("Sua sessão expirou, faça login novamente.", "info");
           handleLogout();
         } else {
-          ToastAlerta("Erro ao cadastrar postagem. Tente novamente.","erro");
+          ToastAlerta("Erro ao cadastrar postagem. Tente novamente.", "erro");
         }
       }
     }

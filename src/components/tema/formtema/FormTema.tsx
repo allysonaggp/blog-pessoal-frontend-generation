@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useContext, useEffect, useState, type ChangeEvent, type FormEvent } from "react";
+import { useContext, useEffect, useState, type ChangeEvent } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import type Tema from "../../../models/Tema";
 import { AuthContext } from "../../../context/AuthContext";
@@ -30,7 +30,7 @@ function FormTema() {
 
   useEffect(() => {
     if (token === "") {
-      ToastAlerta("Você precisa estar logado","erro");
+      ToastAlerta("Você precisa estar logado", "erro");
       navigate("/");
     }
   }, [token]);
@@ -52,19 +52,19 @@ function FormTema() {
     navigate("/temas");
   }
 
-  async function gerarNovoTema(e: FormEvent<HTMLInputElement>) {
+  async function gerarNovoTema(e: React.ChangeEvent<HTMLFormElement>) {
     e.preventDefault();
     setIsLoading(true);
 
     if (id !== undefined) {
       try {
         await atualizar("/temas", tema, setTema, { headers: { Authorization: token } });
-        ToastAlerta("O tema foi atualizado com sucesso!","sucesso");
+        ToastAlerta("O tema foi atualizado com sucesso!", "sucesso");
       } catch (error: any) {
         if (error.toString().includes("401")) {
           handleLogout();
         } else {
-          ToastAlerta("Erro ao atualizar o tema.","erro");
+          ToastAlerta("Erro ao atualizar o tema.", "erro");
         }
       }
     } else {
@@ -73,12 +73,12 @@ function FormTema() {
           headers: { Authorization: token },
         });
 
-        ToastAlerta("O Tema foi cadastrado com sucesso!","sucesso");
+        ToastAlerta("O Tema foi cadastrado com sucesso!", "sucesso");
       } catch (error: any) {
         if (error.toString().includes("401")) {
           handleLogout();
         } else {
-          ToastAlerta("Erro ao cadastrar o tema.","erro");
+          ToastAlerta("Erro ao cadastrar o tema.", "erro");
         }
       }
     }
