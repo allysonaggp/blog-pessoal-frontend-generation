@@ -3,8 +3,8 @@
 /* eslint-disable @typescript-eslint/no-unsafe-function-type */
 import axios from "axios";
 
-// const api = axios.create({ baseURL: "https://blog-pessoal-hvdw.onrender.com" });
-const api = axios.create({ baseURL: "http://localhost:4000" });
+const api = axios.create({ baseURL: "https://blog-pessoal-hvdw.onrender.com" });
+// const api = axios.create({ baseURL: "http://localhost:4000" });
 
 export const cadastrarUsuario = async (url: string, dados: Object, setDados: Function) => {
   const resposta = await api.post(url, dados);
