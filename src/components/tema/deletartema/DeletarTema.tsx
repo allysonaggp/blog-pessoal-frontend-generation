@@ -52,7 +52,7 @@ function DeletarTema() {
       });
       alert("Tema apagado com secesso");
     } catch (error: any) {
-      if (error.toString().inclides("401")) {
+      if (error.toString().includes("401")) {
         handleLogout();
       } else {
         alert("Erro ao deletar o tema");

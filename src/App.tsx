@@ -9,6 +9,8 @@ import ListaTemas from "./components/listatemas/ListaTemas";
 import FormTema from "./components/tema/formtema/FormTema";
 import DeletarTema from "./components/tema/deletartema/DeletarTema";
 import ListaPostagens from "./components/postagem/listapostagens/ListaPostagens";
+import FormPostagem from "./components/postagem/formpostagem/FormPostagem";
+import DeletarPostagem from "./components/postagem/deletarpostagem/DeletarPostagem";
 
 
 function App() {
@@ -17,7 +19,7 @@ function App() {
       <AuthProvider>
         <BrowserRouter>
           <Navbar />
-          <div className="min-h-[80vh]">
+          <div className="min-h-[60vh]">
             <Routes>
               <Route path="/" element={<Login />} />
               <Route path="/home" element={<Home />} />
@@ -27,6 +29,9 @@ function App() {
               <Route path="/editartema/:id" element={<FormTema />}/>
               <Route path="/deletartema/:id" element={<DeletarTema/>}/>              
               <Route path="/postagens" element={<ListaPostagens/>}/>             
+              <Route path="casdastrarpostagem" element={<FormPostagem/>}/>
+              <Route path="editarpostagem/:id" element={<FormPostagem/>}/>
+              <Route path="deletarpostagem/:id" element={<DeletarPostagem/>}/>
             </Routes>
           </div>
           <Footer />
