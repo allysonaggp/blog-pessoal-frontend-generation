@@ -1,3 +1,5 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useNavigate } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import CardPostagem from "../cardpostagem/CardPostagem";
@@ -5,6 +7,7 @@ import { SyncLoader } from "react-spinners";
 import { AuthContext } from "../../../context/AuthContext";
 import type Postagem from "../../../models/Postagem";
 import { buscar } from "../../../services/service";
+import { ToastAlerta } from "../../../utils/ToastAlerta";
 
 function ListaPostagens() {
   const navigate = useNavigate();
@@ -15,7 +18,7 @@ function ListaPostagens() {
 
   useEffect(() => {
     if (token === "") {
-      alert("Você precisa estar logado!");
+      ToastAlerta("Você precisa estar logado!","info");
       navigate("/");
     }
   }, [token]);

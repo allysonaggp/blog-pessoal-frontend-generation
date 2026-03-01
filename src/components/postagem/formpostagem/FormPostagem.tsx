@@ -7,6 +7,7 @@ import { AuthContext } from "../../../context/AuthContext";
 import { atualizar, buscar, cadastrar } from "../../../services/service";
 import type Postagem from "../../../models/Postagem";
 import { ClipLoader } from "react-spinners";
+import { ToastAlerta } from "../../../utils/ToastAlerta";
 
 function FormPostagem() {
   const navigate = useNavigate();
@@ -60,7 +61,7 @@ function FormPostagem() {
 
   useEffect(() => {
     if (token === "") {
-      alert("Você precisa estar logado");
+      ToastAlerta("Você precisa estar logado","info");
       navigate("/");
     }
   }, [token]);
@@ -107,14 +108,14 @@ function FormPostagem() {
             Authorization: token,
           },
         });
-        alert("Postagem atualizada com sucesso!");
+        ToastAlerta("Postagem atualizada com sucesso!","sucesso");
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
       } catch (error: any) {
         if (error.toString().includes("401")) {
-          alert("Sua sessão expirou, faça login novamente.");
+          ToastAlerta("Sua sessão expirou, faça login novamente.","info");
           handleLogout();
         } else {
-          alert("Erro ao atualizar postagem. Tente novamente.");
+          ToastAlerta("Erro ao atualizar postagem. Tente novamente.","erro");
         }
       }
     } else {
@@ -124,14 +125,14 @@ function FormPostagem() {
             Authorization: token,
           },
         });
-        alert("Postagem cadastrada com sucesso!");
+        ToastAlerta("Postagem cadastrada com sucesso!","sucesso");
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
       } catch (error: any) {
         if (error.toString().includes("401")) {
-          alert("Sua sessão expirou, faça login novamente.");
+          ToastAlerta("Sua sessão expirou, faça login novamente.","info");
           handleLogout();
         } else {
-          alert("Erro ao cadastrar postagem. Tente novamente.");
+          ToastAlerta("Erro ao cadastrar postagem. Tente novamente.","erro");
         }
       }
     }

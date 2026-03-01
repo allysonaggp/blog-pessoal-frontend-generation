@@ -1,10 +1,11 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-wrapper-object-types */
 /* eslint-disable @typescript-eslint/no-unsafe-function-type */
 import axios from "axios";
+const producao = { baseURL: "https://blog-pessoal-hvdw.onrender.com" };
+const desenvolvimento = { baseURL: "http://localhost:4000" };
 
-// const api = axios.create({ baseURL: "https://blog-pessoal-hvdw.onrender.com" });
-const api = axios.create({ baseURL: "http://localhost:4000" });
-
+const api = axios.create(producao);
 
 export const cadastrarUsuario = async (url: string, dados: Object, setDados: Function) => {
   const resposta = await api.post(url, dados);
@@ -24,13 +25,13 @@ export const buscar = async (url: string, setDados: Function, header: Object) =>
 
 export const cadastrar = async (url: string, dados: Object, setDados: Function, header: Object) => {
   const resposta = await api.post(url, dados, header);
-  console.log(resposta)
+  console.log(resposta);
   setDados(resposta.data);
 };
 
 export const atualizar = async (url: string, dados: Object, setDados: Function, header: Object) => {
   const resposta = await api.put(url, dados, header);
-  console.log("Resposta data",resposta.data)
+  console.log("Resposta data", resposta.data);
   setDados(resposta.data);
 };
 
